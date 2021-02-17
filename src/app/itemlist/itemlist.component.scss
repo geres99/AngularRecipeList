@@ -1,0 +1,14 @@
+.itemList {
+  display: flex;
+  background-color: #e6e6e6;
+  width: 250px;
+  flex-direction: column;
+}
+.spaceFill {
+  height: 25px;
+}
+.rowList {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -1,0 +1,11 @@
+<div class="itemList">
+    <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
+        <button (click)="selectRecipe(item._id)">{{item.name}}</button>
+        <button (click)="deleteRecipe(item._id)">x</button>
+    </div>
+    <div class="spaceFill"></div>
+</div>
+<button (click)="fetchData()">Fetch Data</button>
+<button (click)="addData()">Add Data</button>
+<div>{{xxx}}</div>
+
