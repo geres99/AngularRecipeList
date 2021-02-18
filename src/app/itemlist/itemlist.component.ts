@@ -4,13 +4,12 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-itemlist',
   templateUrl: './itemlist.component.html',
   styleUrls: ['./itemlist.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ItemlistComponent implements OnInit {
 
   xxx = 0
   ourData = []
-  APIkey = "c87a8cdae13f467c8b3a6ca2991bf2be"
+  APIkey = "7ef4705ebe804b9d896fdf1cc3a327ed"
 
   selectRecipe = (x) => {
     console.log(x)
@@ -21,22 +20,23 @@ export class ItemlistComponent implements OnInit {
       method: 'delete'
     })
     this.fetchData()
-    this.xxx = this.xxx + 1
   }
 
+  async getData(response) {
+    this.ourData = await response.json()
+  }
+  
 
   async fetchData() {
-      let response = await fetch(
+      await fetch(
         "https://crudcrud.com/api/" + this.APIkey + "/itemlist"
-      );
-      let responseJson = await response.json();
-      this.ourData = responseJson
-      console.log(responseJson)
-      this.xxx = this.xxx + 1
+      ).then((response) => this.getData(response))
   }
 
+  x = this.fetchData()
+
   async addData() {
-    let response = await fetch("https://crudcrud.com/api/" + this.APIkey + "/itemlist", {
+    await fetch("https://crudcrud.com/api/" + this.APIkey + "/itemlist", {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -48,10 +48,7 @@ export class ItemlistComponent implements OnInit {
         "ingredients": [{"_id": "1", "name": "cereals", "quantity": "100g"},{"_id": "2", "name": "milk", "quantity": "100ml"}]
     }),
     })
-    let responseJson = await response.json();
-    this.ourData.push(responseJson)
-    console.log(responseJson)
-    this.xxx = this.xxx + 1
+    this.fetchData()
   }
 
   constructor() { }
