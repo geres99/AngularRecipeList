@@ -1,1 +1,84 @@
-<div class="squareSpace"></div>
+<div class="squareSpace">
+    <div *ngFor="let item of active">
+        <div class="myColumn">
+            <div>Name: {{data.name}}</div>
+            <div>Preparation Time In Minutes: {{data.preparationTimeInMinutes}}</div>
+            <div>Description: {{data.description}}</div>
+            <div>Ingredients:</div>
+            <div class="myColumn" *ngFor="let item of data.ingredients">
+                <div class="spaceBetween"></div>
+                <div class="myMargin">Name: {{item.name}} </div>
+                <div class="myMargin">Quantity: {{item.quantity}}</div>
+                <div class="spaceBetween"></div>
+            </div>
+        </div>
+    </div>
+    <div *ngFor="let item of edit">
+        <div class="myColumn">
+            <div>
+                Name: 
+                <input [(ngModel)] = "data.name"/>
+            </div>
+            <div>Preparation Time In Minutes: 
+                <input [(ngModel)] = "data.preparationTimeInMinutes"/>
+            </div>
+            <div>Description: 
+                <input [(ngModel)] = "data.description"/>
+            </div>
+            <div>Ingredients:</div>
+            <div class="myColumn" *ngFor="let item of data.ingredients">
+                <div class="spaceBetween"></div>
+                <div class="myMargin">ID: 
+                    <input [(ngModel)] = "item._id"/>
+                    <button (click) = "filterID(data, item._id)">x</button>
+                </div>
+                <div class="myMargin">Name: 
+                    <input [(ngModel)] = "item.name"/>
+                </div>
+                <div class="myMargin">Quantity: 
+                    <input [(ngModel)] = "item.quantity"/>
+                </div>
+                <div class="spaceBetween"></div>
+            </div>
+            <button (click) = "addMore()">+</button>
+        </div>
+        <div>
+            <button (click) = "acceptChanges()">Accept</button>
+            <button (click) = "declineChanges(data._id)">Decline</button>
+        </div>
+    </div>
+    <div *ngFor="let item of new">
+        <div class="myColumn">
+            <div>
+                Name: 
+                <input [(ngModel)] = "data.name"/>
+            </div>
+            <div>Preparation Time In Minutes: 
+                <input [(ngModel)] = "data.preparationTimeInMinutes"/>
+            </div>
+            <div>Description: 
+                <input [(ngModel)] = "data.description"/>
+            </div>
+            <div>Ingredients:</div>
+            <div class="myColumn" *ngFor="let item of data.ingredients">
+                <div class="spaceBetween"></div>
+                <div class="myMargin">ID: 
+                    <input [(ngModel)] = "item._id"/>
+                    <button (click) = "filterID(data, item._id)">x</button>
+                </div>
+                <div class="myMargin">Name: 
+                    <input [(ngModel)] = "item.name"/>
+                </div>
+                <div class="myMargin">Quantity: 
+                    <input [(ngModel)] = "item.quantity"/>
+                </div>
+                <div class="spaceBetween"></div>
+            </div>
+            <button (click) = "addMore()">+</button>
+        </div>
+        <div>
+            <button (click) = "addData()">Accept</button>
+            <button (click) = "declineChanges(data._id)">Decline</button>
+        </div>
+    </div>
+</div>

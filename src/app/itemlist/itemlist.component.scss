@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 .spaceFill {
-  height: 25px;
+  height: 10px;
 }
 .rowList {
   display: flex;
@@ -19,9 +19,13 @@
   justify-content: center;
 }
 .spaceFillMyRow {
-  width: 25px;
+  width: 10px;
+}
+.myCenter {
+  display: flex;
+  justify-content: center;
 }
 .myColumn {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, NgModule } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-info',
@@ -11,6 +11,8 @@ export class InfoComponent implements OnInit {
   @Input() edit:any
   @Input() new:any
   @Input() APIkey:any
+  @Output() sendRefresh = new EventEmitter<any>()
+
   constructor() { }
 
   filterID = (data, id) => {
@@ -76,6 +78,7 @@ export class InfoComponent implements OnInit {
         "ingredients": this.data.ingredients
     }),
     })
+    this.sendRefresh.emit("refresh")
   }
 
   ngOnInit(): void {

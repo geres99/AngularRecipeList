@@ -7,12 +7,37 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ItemlistComponent implements OnInit {
 
-  xxx = 0
   ourData = []
-  APIkey = "7ef4705ebe804b9d896fdf1cc3a327ed"
+  APIkey = "f2706728248445afb0d31ed297b6e508"
+  selectedOne:object = {}
+  isActive:any = []
+  isEdit:any = []
+  isNew:any = []
 
-  selectRecipe = (x) => {
-    console.log(x)
+  listener = (data) => {
+    if(data) {
+      this.fetchData()
+    }
+  }
+
+  selectRecipe = (selected) => {
+    for(let i = 0; i<this.ourData.length; i++) {
+      if(this.ourData[i]._id === selected) {
+        this.selectedOne = this.ourData[i]
+        this.isActive = ["true"]
+        this.isEdit = []
+      }
+    }
+  }
+
+  editRecipe = (selected) => {
+    for(let i = 0; i<this.ourData.length; i++) {
+      if(this.ourData[i]._id === selected) {
+        this.selectedOne = this.ourData[i]
+        this.isActive = []
+        this.isEdit = ["true"]
+      }
+    }
   }
 
   async deleteRecipe(url) {
@@ -24,6 +49,7 @@ export class ItemlistComponent implements OnInit {
 
   async getData(response) {
     this.ourData = await response.json()
+    this.isActive = []
   }
   
 
@@ -36,19 +62,13 @@ export class ItemlistComponent implements OnInit {
   x = this.fetchData()
 
   async addData() {
-    await fetch("https://crudcrud.com/api/" + this.APIkey + "/itemlist", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "name": "cereals with milk",
-        "preparationTimeInMinutes": "1",
-        "description": "put cereals in and then add some milk",
-        "ingredients": [{"_id": "1", "name": "cereals", "quantity": "100g"},{"_id": "2", "name": "milk", "quantity": "100ml"}]
-    }),
-    })
-    this.fetchData()
+    this.selectedOne = {
+      "name": "",
+      "preparationTimeInMinutes": "",
+      "description": "",
+      "ingredients": [{"_id": "", "name": "", "quantity": ""}]
+  }
+    this.isNew = ["true"]
   }
 
   constructor() { }

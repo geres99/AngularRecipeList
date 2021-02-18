@@ -1,17 +1,23 @@
-<div class="myColumn">
-    <app-navbar></app-navbar>
-</div>
-<div class="myRow">
-    <div class="itemList">
-        <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
-            <button (click)="selectRecipe(item._id)">{{item.name}}</button>
-            <button (click)="deleteRecipe(item._id)">x</button>
-        </div>
+<div class="myCenter">
+    <div class="myColumn">
+        <app-navbar></app-navbar>
         <div class="spaceFill"></div>
+        <div class="myRow">
+            <div class="itemList">
+                <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
+                    <button (click)="selectRecipe(item._id)">{{item.name}}</button>
+                    <div>
+                        <button (click)="editRecipe(item._id)">E</button>
+                        <button (click)="deleteRecipe(item._id)">x</button>
+                    </div>
+                </div>
+                <button (click)="addData()">Add Data</button>
+                <div class="spaceFill"></div>
+            </div>
+            <div class="spaceFillMyRow"></div>
+            <app-info [data] = "selectedOne" [active] = "isActive" [edit] = "isEdit" [new] = "isNew" [APIkey] = "APIkey" (sendRefresh) = "listener($event)"></app-info>
+        </div>
     </div>
-    <div class="spaceFillMyRow"></div>
-    <app-info></app-info>
 </div>
-<button (click)="addData()">Add Data</button>
 
 
