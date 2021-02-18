@@ -1,10 +1,17 @@
-<div class="itemList">
-    <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
-        <button (click)="selectRecipe(item._id)">{{item.name}}</button>
-        <button (click)="deleteRecipe(item._id)">x</button>
+<div class="myColumn">
+    <app-navbar></app-navbar>
+</div>
+<div class="myRow">
+    <div class="itemList">
+        <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
+            <button (click)="selectRecipe(item._id)">{{item.name}}</button>
+            <button (click)="deleteRecipe(item._id)">x</button>
+        </div>
+        <div class="spaceFill"></div>
     </div>
-    <div class="spaceFill"></div>
+    <div class="spaceFillMyRow"></div>
+    <app-info></app-info>
 </div>
 <button (click)="addData()">Add Data</button>
-<app-info></app-info>
+
 
