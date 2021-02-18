@@ -1,5 +1,10 @@
 <div class="myCenter">
     <div class="myColumn">
+        <div *ngFor="let item of errorMessage">
+            <div class="errorMessage">
+                <div>{{item}}</div>
+            </div>
+        </div>
         <app-navbar></app-navbar>
         <div class="spaceFill"></div>
         <div class="myRow">
@@ -15,7 +20,7 @@
                 <div class="spaceFill"></div>
             </div>
             <div class="spaceFillMyRow"></div>
-            <app-info [data] = "selectedOne" [active] = "isActive" [edit] = "isEdit" [new] = "isNew" [APIkey] = "APIkey" (sendRefresh) = "listener($event)"></app-info>
+            <app-info [data] = "selectedOne" [active] = "isActive" [edit] = "isEdit" [new] = "isNew" [APIkey] = "APIkey" (sendRefresh) = "listener($event)" (sendError) = "listenerError($event)"></app-info>
         </div>
     </div>
 </div>

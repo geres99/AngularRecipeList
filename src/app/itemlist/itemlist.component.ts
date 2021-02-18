@@ -8,16 +8,33 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class ItemlistComponent implements OnInit {
 
   ourData = []
-  APIkey = "f2706728248445afb0d31ed297b6e508"
+  APIkey = "2e1177c2209d47809502a0cbbe398d6f"
   selectedOne:object = {}
   isActive:any = []
   isEdit:any = []
   isNew:any = []
+  errorMessage:any = []
 
   listener = (data) => {
     if(data) {
       this.fetchData()
     }
+  }
+
+  listenerError = (data) => {
+    if(data) {
+      if(data === "Error") {
+        this.errorMessage = [data]
+      }
+      else {
+        this.errorMessage = [data]
+      }
+      setTimeout(this.closePopUps, 3000)
+    }
+  }
+
+  closePopUps = () => {
+    this.errorMessage = []
   }
 
   selectRecipe = (selected) => {
@@ -45,6 +62,8 @@ export class ItemlistComponent implements OnInit {
       method: 'delete'
     })
     this.fetchData()
+    this.errorMessage = ["Success"]
+    setTimeout(this.closePopUps, 3000)
   }
 
   async getData(response) {

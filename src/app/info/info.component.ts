@@ -12,6 +12,7 @@ export class InfoComponent implements OnInit {
   @Input() new:any
   @Input() APIkey:any
   @Output() sendRefresh = new EventEmitter<any>()
+  @Output() sendError = new EventEmitter<any>()
 
   constructor() { }
 
@@ -42,12 +43,14 @@ export class InfoComponent implements OnInit {
         "ingredients": this.data.ingredients
     }),
     })
+    this.sendError.emit("Success")
   }
 
   declineChanges = () => {
     this.fetchData()
     this.edit = []
     this.active = ["true"]
+    this.sendRefresh.emit("refresh")
   }
 
   async getData(response) {
@@ -66,19 +69,26 @@ export class InfoComponent implements OnInit {
   }
 
   async addData() {
-    await fetch("https://crudcrud.com/api/" + this.APIkey + "/itemlist", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        "name": this.data.name,
-        "preparationTimeInMinutes": this.data.preparationTimeInMinutes,
-        "description": this.data.description,
-        "ingredients": this.data.ingredients
-    }),
-    })
-    this.sendRefresh.emit("refresh")
+    if(this.data.name.length >= 3 && this.data.name.length <= 80 && Number.isInteger(Number(this.data.preparationTimeInMinutes)) === true && this.data.description.length >= 15 && this.data.description.length <= 255 && this.data.ingredients.length >= 2) {
+      await fetch("https://crudcrud.com/api/" + this.APIkey + "/itemlist", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          "name": this.data.name,
+          "preparationTimeInMinutes": this.data.preparationTimeInMinutes,
+          "description": this.data.description,
+          "ingredients": this.data.ingredients
+      }),
+      })
+      this.sendRefresh.emit("refresh")
+      this.sendError.emit("Success")
+      this.new = []
+    }
+    else {
+      this.sendError.emit("Error")
+    }
   }
 
   ngOnInit(): void {
