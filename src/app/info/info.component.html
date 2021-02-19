@@ -40,9 +40,9 @@
                 </div>
                 <div class="spaceBetween"></div>
             </div>
-            <button (click) = "addMore()">+</button>
+            <button class="plusButton" (click) = "addMore()">+</button>
         </div>
-        <div>
+        <div class="betweenButton">
             <button (click) = "acceptChanges()">Accept</button>
             <button (click) = "declineChanges(data._id)">Decline</button>
         </div>
@@ -74,11 +74,11 @@
                 </div>
                 <div class="spaceBetween"></div>
             </div>
-            <button (click) = "addMore()">+</button>
+            <button class="plusButton" (click) = "addMore()">+</button>
         </div>
-        <div>
+        <div class="betweenButton">
             <button (click) = "addData()">Accept</button>
-            <button (click) = "declineChanges(data._id)">Decline</button>
+            <button (click) = "declineChangesNew(data._id)">Decline</button>
         </div>
     </div>
 </div>

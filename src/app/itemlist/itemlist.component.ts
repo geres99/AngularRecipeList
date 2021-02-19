@@ -7,13 +7,16 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 })
 export class ItemlistComponent implements OnInit {
 
+  selectedAPIkey:string[] = ["false"]
+  showContent:string[] = []
   ourData = []
-  APIkey = "b4d0f497dab0475496cac27c20b126e4"
+  APIkey = "2590d2bb48944e1e9d597d7a86b4d742"
   selectedOne:object = {}
-  isActive:any = []
-  isEdit:any = []
-  isNew:any = []
-  errorMessage:any = []
+  isActive:string[] = []
+  isEdit:string[] = []
+  isNew:string[] = []
+  errorMessage:string[] = []
+  possitiveMessage:string[] = []
 
   listener = (data) => {
     if(data) {
@@ -27,14 +30,20 @@ export class ItemlistComponent implements OnInit {
         this.errorMessage = [data]
       }
       else {
-        this.errorMessage = [data]
+        this.possitiveMessage = [data]
       }
       setTimeout(this.closePopUps, 3000)
     }
   }
 
+  startCreating = () => {
+    this.selectedAPIkey= []
+    this.showContent = ["true"]
+  }
+
   closePopUps = () => {
     this.errorMessage = []
+    this.possitiveMessage = []
   }
 
   selectRecipe = (selected) => {
@@ -43,6 +52,7 @@ export class ItemlistComponent implements OnInit {
         this.selectedOne = this.ourData[i]
         this.isActive = ["true"]
         this.isEdit = []
+        this.isNew = []
       }
     }
   }
@@ -53,6 +63,7 @@ export class ItemlistComponent implements OnInit {
         this.selectedOne = this.ourData[i]
         this.isActive = []
         this.isEdit = ["true"]
+        this.isNew = []
       }
     }
   }
@@ -62,7 +73,7 @@ export class ItemlistComponent implements OnInit {
       method: 'delete'
     })
     this.fetchData()
-    this.errorMessage = ["Success"]
+    this.possitiveMessage = ["Success"]
     setTimeout(this.closePopUps, 3000)
   }
 
@@ -87,6 +98,8 @@ export class ItemlistComponent implements OnInit {
       "description": "add some cereals and then add milk",
       "ingredients": [{"_id": "1", "name": "cereals", "quantity": "100g"},{"_id": "2", "name": "milk", "quantity": "100ml"}]
   }
+    this.isActive = []
+    this.isEdit = []
     this.isNew = ["true"]
   }
 

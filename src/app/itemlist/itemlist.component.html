@@ -1,29 +1,50 @@
-<div class="myCenter">
-    <div class="myColumn">
-        <div *ngFor="let item of errorMessage">
-            <div class="errorMessage">
-                <div>{{item}}</div>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+<div *ngFor="let item of selectedAPIkey">
+    <div class="myRow">
+        <div class="APIbox">
+            <div class="welcomeInfo">
+                <div>Hello :)</div>
+                <div class="smallLetters">Generate your own unique API key from website belowe and start creating your own recipe list</div>
+                <a class="smallLetters" href="https://crudcrud.com/">https://crudcrud.com/</a>
+                <input [(ngModel)] = "APIkey"/>
+                <button (click) = "startCreating()">Start</button>
             </div>
-        </div>
-        <app-navbar></app-navbar>
-        <div class="spaceFill"></div>
-        <div class="myRow">
-            <div class="itemList">
-                <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
-                    <button class="longButton" (click)="selectRecipe(item._id)">{{item.name}}</button>
-                    <div>
-                        <button (click)="editRecipe(item._id)">E</button>
-                        <button (click)="deleteRecipe(item._id)">x</button>
-                    </div>
-                </div>
-                <button (click)="addData()">Add Data</button>
-                <div class="spaceFill"></div>
-            </div>
-            <div class="spaceFillMyRow"></div>
-            <app-info [data] = "selectedOne" [active] = "isActive" [edit] = "isEdit" [new] = "isNew" [APIkey] = "APIkey" (sendRefresh) = "listener($event)" (sendError) = "listenerError($event)"></app-info>
         </div>
     </div>
-    XXXX
+</div>
+<div *ngFor="let item of showContent">
+    <div class="myCenter">
+        <div class="myColumn">
+            <div *ngFor="let item of errorMessage">
+                <div class="errorMessage">
+                    <div>{{item}}</div>
+                </div>
+            </div>
+            <div *ngFor="let item of possitiveMessage">
+                <div class="possitiveMessage">
+                    <div>{{item}}</div>
+                </div>
+            </div>
+            <app-navbar></app-navbar>
+            <div class="spaceFill"></div>
+            <div class="myRow">
+                <div class="itemList">
+                    <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
+                        <button class="longButton" (click)="selectRecipe(item._id)">{{item.name}}</button>
+                        <div>
+                            <button (click)="editRecipe(item._id)">E</button>
+                            <button (click)="deleteRecipe(item._id)">X</button>
+                        </div>
+                    </div>
+                    <button (click)="addData()">Add Data</button>
+                    <div class="spaceFill"></div>
+                </div>
+                <div class="spaceFillMyRow"></div>
+                <app-info [data] = "selectedOne" [active] = "isActive" [edit] = "isEdit" [new] = "isNew" [APIkey] = "APIkey" (sendRefresh) = "listener($event)" (sendError) = "listenerError($event)"></app-info>
+            </div>
+        </div>
+    </div>
 </div>
 
 

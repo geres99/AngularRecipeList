@@ -53,6 +53,13 @@ export class InfoComponent implements OnInit {
     this.sendRefresh.emit("refresh")
   }
 
+  declineChangesNew = () => {
+    this.edit = []
+    this.active = []
+    this.new = []
+    this.sendRefresh.emit("refresh")
+  }
+
   async getData(response) {
     let preData = await response.json()
     for(let i = 0; i<preData.length; i++) {
