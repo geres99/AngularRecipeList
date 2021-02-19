@@ -10,7 +10,11 @@ export class ItemlistComponent implements OnInit {
   selectedAPIkey:string[] = ["false"]
   showContent:string[] = []
   ourData = []
+<<<<<<< HEAD
   APIkey = "47b61709f5934b5b97e025db45e34171"
+=======
+  APIkey = ""
+>>>>>>> master
   selectedOne:object = {}
   isActive:string[] = []
   isEdit:string[] = []
