@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 export class ItemlistComponent implements OnInit {
 
   ourData = []
-  APIkey = "2e1177c2209d47809502a0cbbe398d6f"
+  APIkey = "b4d0f497dab0475496cac27c20b126e4"
   selectedOne:object = {}
   isActive:any = []
   isEdit:any = []
@@ -82,10 +82,10 @@ export class ItemlistComponent implements OnInit {
 
   async addData() {
     this.selectedOne = {
-      "name": "",
-      "preparationTimeInMinutes": "",
-      "description": "",
-      "ingredients": [{"_id": "", "name": "", "quantity": ""}]
+      "name": "cereals with milk",
+      "preparationTimeInMinutes": "1",
+      "description": "add some cereals and then add milk",
+      "ingredients": [{"_id": "1", "name": "cereals", "quantity": "100g"},{"_id": "2", "name": "milk", "quantity": "100ml"}]
   }
     this.isNew = ["true"]
   }

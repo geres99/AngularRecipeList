@@ -41,3 +41,10 @@
 .errorMessage > * {
   padding-top: 10px;
 }
+.longButton {
+  min-width: 190px;
+  max-width: 190px;
+}
+button {
+  border: none;
+}

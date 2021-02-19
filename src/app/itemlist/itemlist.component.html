@@ -10,7 +10,7 @@
         <div class="myRow">
             <div class="itemList">
                 <div class="rowList" *ngFor="let item of ourData" (itemChanged)="save($event)" (item) = "item">
-                    <button (click)="selectRecipe(item._id)">{{item.name}}</button>
+                    <button class="longButton" (click)="selectRecipe(item._id)">{{item.name}}</button>
                     <div>
                         <button (click)="editRecipe(item._id)">E</button>
                         <button (click)="deleteRecipe(item._id)">x</button>
