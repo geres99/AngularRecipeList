@@ -10,7 +10,7 @@ export class ItemlistComponent implements OnInit {
   selectedAPIkey:string[] = ["false"]
   showContent:string[] = []
   ourData = []
-  APIkey = "2590d2bb48944e1e9d597d7a86b4d742"
+  APIkey = ""
   selectedOne:object = {}
   isActive:string[] = []
   isEdit:string[] = []
@@ -39,6 +39,7 @@ export class ItemlistComponent implements OnInit {
   startCreating = () => {
     this.selectedAPIkey= []
     this.showContent = ["true"]
+    this.fetchData()
   }
 
   closePopUps = () => {
