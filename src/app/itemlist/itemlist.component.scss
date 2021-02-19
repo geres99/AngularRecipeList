@@ -1,6 +1,6 @@
 .itemList {
   display: flex;
-  background-color: #e6e6e6;
+  background-color: #8a8692;
   width: 250px;
   min-height: 500px;
   flex-direction: column;
@@ -33,7 +33,7 @@
   display: flex;
   height: 50px;
   width: 100%;
-  background-color: red;
+  background-color: #ff3333;
   margin-bottom: 5px;
   color: white;
   justify-content: center;
@@ -41,10 +41,54 @@
 .errorMessage > * {
   padding-top: 10px;
 }
+.possitiveMessage {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background-color: #4dff4d;
+  margin-bottom: 5px;
+  color: white;
+  justify-content: center;
+}
+.possitiveMessage > * {
+  padding-top: 10px;
+}
 .longButton {
-  min-width: 190px;
-  max-width: 190px;
+  min-width: 205px;
+  max-width: 205px;
+  background-color: #4f4d53;
+  color: white;
 }
 button {
   border: none;
+  background-color: #e8be02;
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+  color: #4f4d53;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Roboto";
+}
+.APIbox {
+  margin-top: 50px;
+  height: 200px;
+  width: 400px;
+  background-color: #8a8692;
+}
+.welcomeInfo {
+  display: flex;
+  font-size: 22px;
+  font-weight: 800;
+  font-family: "Roboto";
+  color: #e8be02;
+  flex-direction: column;
+  justify-content: center;
+}
+.welcomeInfo > * {
+  margin-top: 10px;
+  padding-left: 5px;
+}
+.smallLetters {
+  font-size: 18px;
 }
